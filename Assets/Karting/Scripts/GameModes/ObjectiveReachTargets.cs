@@ -23,9 +23,7 @@ public class ObjectiveReachTargets : Objective
         
         yield return new WaitForEndOfFrame();
 
-        title = "Collect " +
-                (mustCollectAllPickups ? "all the" : pickupsToCompleteObjective.ToString()) + " " +
-                targetName + "s";
+        title = "Reach the Finish without falling";
         
         if (mustCollectAllPickups)
             pickupsToCompleteObjective = NumberOfPickupsTotal;
@@ -61,9 +59,7 @@ public class ObjectiveReachTargets : Objective
         else if (targetRemaining > 1)
         {
             // create a notification text if needed, if it stays empty, the notification will not be created
-            string notificationText = notificationPickupsRemainingThreshold >= targetRemaining
-                ? targetRemaining + " " + targetName + "s to collect left"
-                : string.Empty;
+            string notificationText = string.Empty;
 
             UpdateObjective(string.Empty, GetUpdatedCounterAmount(), notificationText);
         }
