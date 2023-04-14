@@ -48,6 +48,8 @@ public class GameFlowManager : MonoBehaviour
     string m_SceneToLoad;
     float elapsedTimeBeforeEndScene = 0;
 
+    KillPlaneTrigger killPlane;
+
     void Start()
     {
         if (autoFindKarts)
@@ -67,6 +69,8 @@ public class GameFlowManager : MonoBehaviour
         DebugUtility.HandleErrorIfNullFindObject<TimeManager, GameFlowManager>(m_TimeManager, this);
 
         AudioUtility.SetMasterVolume(1);
+
+        killPlane = FindObjectOfType<KillPlaneTrigger>();
 
         winDisplayMessage.gameObject.SetActive(false);
         loseDisplayMessage.gameObject.SetActive(false);
@@ -142,7 +146,7 @@ public class GameFlowManager : MonoBehaviour
             if (m_ObjectiveManager.AreAllObjectivesCompleted())
                 EndGame(true);
 
-            if (m_TimeManager.IsFinite && m_TimeManager.IsOver)
+            if ((m_TimeManager.IsFinite && m_TimeManager.IsOver) || killPlane.playerHit)
                 EndGame(false);
         }
     }
