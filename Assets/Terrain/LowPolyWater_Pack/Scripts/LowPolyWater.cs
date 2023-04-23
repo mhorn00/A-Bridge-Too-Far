@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace LowPolyWater
+namespace LowPolyWater1
 {
     public class LowPolyWater : MonoBehaviour
     {

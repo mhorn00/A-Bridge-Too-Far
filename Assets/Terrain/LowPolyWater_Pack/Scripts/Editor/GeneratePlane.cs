@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.IO;
 
-namespace LowPolyWater
+namespace LowPolyWater1
 {
     public class GeneratePlane : ScriptableWizard
     {
