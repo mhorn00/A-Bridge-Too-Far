@@ -7,6 +7,8 @@ public class KillPlaneTrigger : MonoBehaviour
     public bool playerHit = false;
 
     void OnTriggerEnter(Collider Other) {
-        playerHit = true;
+        if (Other.CompareTag("Player")) {
+            playerHit = true;
+        }
     }
 }
