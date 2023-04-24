@@ -407,6 +407,7 @@ MonoBehaviour:
   raceCountdownTrigger: {fileID: 6934670203731004115}
   loseSceneName: LoseScene
   loseDisplayMessage: {fileID: 134547017375206124}
+  loseSound: {fileID: 8300000, guid: be7215404718b4ba6babe544726ed152, type: 3}
   autoFindKarts: 1
   playerKart: {fileID: 0}
 --- !u!114 &3244674540524639750

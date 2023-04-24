@@ -34,6 +34,8 @@ public class GameFlowManager : MonoBehaviour
     public string loseSceneName = "LoseScene";
     [Tooltip("Prefab for the lose game message")]
     public DisplayMessage loseDisplayMessage;
+    [Tooltip("Sound played on lose")]
+    public AudioClip loseSound;
 
 
     public GameState gameState { get; private set; }
@@ -186,6 +188,12 @@ public class GameFlowManager : MonoBehaviour
             // create a game message
             loseDisplayMessage.delayBeforeShowing = delayBeforeWinMessage;
             loseDisplayMessage.gameObject.SetActive(true);
+             // play a sound on lose
+        var audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = loseSound;
+        audioSource.playOnAwake = false;
+        audioSource.outputAudioMixerGroup = AudioUtility.GetAudioGroup(AudioUtility.AudioGroups.HUDVictory); // You can change this to a different audio group if needed.
+        audioSource.PlayScheduled(AudioSettings.dspTime + delayBeforeWinMessage);
         }
     }
 }
