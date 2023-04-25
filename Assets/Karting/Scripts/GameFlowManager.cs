@@ -148,8 +148,12 @@ public class GameFlowManager : MonoBehaviour
             if (m_ObjectiveManager.AreAllObjectivesCompleted())
                 EndGame(true);
 
-            if ((m_TimeManager.IsFinite && m_TimeManager.IsOver) || killPlane.playerHit)
+            if ((m_TimeManager.IsFinite && m_TimeManager.IsOver) || killPlane.playerHit) {
+                foreach (ArcadeKart k in karts) {
+                    k.SetCanMove(false);
+                }
                 EndGame(false);
+            }
         }
     }
 
