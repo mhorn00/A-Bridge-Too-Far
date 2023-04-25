@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1699188429272324876}
   - component: {fileID: -5894942001581897811}
-  - component: {fileID: -333591595840679359}
+  - component: {fileID: 1292601099933885186}
+  - component: {fileID: 274245909781892175}
   m_Layer: 0
   m_Name: IceCreamPrefab
   m_TagString: Untagged
@@ -49,9 +50,22 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!64 &-333591595840679359
-MeshCollider:
+  m_CollisionDetection: 2
+--- !u!114 &1292601099933885186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 74677107101967089}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0baf4d53b10f5747bef6a6744e8fd9a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifespan: 10
+--- !u!136 &274245909781892175
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -60,10 +74,10 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 5732d2eb623e298459ec7eef8d1a2131, type: 3}
+  m_Radius: 2.6564965
+  m_Height: 11.1109295
+  m_Direction: 1
+  m_Center: {x: -0.3098626, y: 7.1795464, z: -0.18769312}
 --- !u!1 &8164078558771037576
 GameObject:
   m_ObjectHideFlags: 0
@@ -75,7 +89,6 @@ GameObject:
   - component: {fileID: 1151388028547126963}
   - component: {fileID: -6400281290468069383}
   - component: {fileID: -7635826562936255635}
-  - component: {fileID: 2699092741681021261}
   m_Layer: 0
   m_Name: default
   m_TagString: Untagged
@@ -148,17 +161,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &2699092741681021261
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8164078558771037576}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -2432090755550338912, guid: 5732d2eb623e298459ec7eef8d1a2131, type: 3}

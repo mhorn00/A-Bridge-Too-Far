@@ -15,16 +15,6 @@ public class ObjectSpawnArea : MonoBehaviour {
         // Get reference to player object
         player = GameObject.FindGameObjectWithTag("Player");
         objectsToSpawn = new List<GameObject>();
-        LoadObjects();
-
-        // Start spawning objects
-        StartCoroutine(SpawnObjects());
-    }
-
-    // Update is called once per frame
-    void Update() {}
-
-    private void LoadObjects() {
         objectsToSpawn.Add(Resources.Load<GameObject>("Obstacles/BowlingBallPrefab"));
         objectsToSpawn.Add(Resources.Load<GameObject>("Obstacles/DonutPrefab"));
         objectsToSpawn.Add(Resources.Load<GameObject>("Obstacles/DumbbellPrefab"));
@@ -32,29 +22,18 @@ public class ObjectSpawnArea : MonoBehaviour {
         objectsToSpawn.Add(Resources.Load<GameObject>("Obstacles/IceCreamPrefab"));
         objectsToSpawn.Add(Resources.Load<GameObject>("Obstacles/MissilePrefab"));
         objectsToSpawn.Add(Resources.Load<GameObject>("Obstacles/ToiletPrefab"));
+
+        // Start spawning objects
+        StartCoroutine(SpawnObjects());
     }
 
     IEnumerator SpawnObjects() {
+        float halfWidth = transform.localScale.x / 2f;
+        float halfHeight = transform.localScale.y / 2f;
+        float halfDepth = transform.localScale.z / 2f;
         while (true) {
-            // Randomly select object to spawn
-            int objectIndex = Random.Range(0, objectsToSpawn.Count);
-
-            // Spawn object at random position within cube area
-            float halfWidth = transform.localScale.x / 2f;
-            float halfHeight = transform.localScale.y / 2f;
-            float halfDepth = transform.localScale.z / 2f;
-            float x = Random.Range(-halfWidth, halfWidth);
-            float y = Random.Range(-halfHeight, halfHeight);
-            float z = Random.Range(-halfDepth, halfDepth);
-            Vector3 spawnPosition = transform.position + new Vector3(x, y, z);
-            GameObject spawnedObject = Instantiate(objectsToSpawn[objectIndex], spawnPosition, Quaternion.identity);
-            Rigidbody rb = spawnedObject.GetComponent<Rigidbody>();
-            
-            // Calculate direction to player and fling object towards player
-            Vector3 directionToPlayer = player.transform.position - spawnPosition;
-            rb.AddForce(directionToPlayer.normalized * flingForce);
-
-            // Wait for spawn interval before spawning next object
+            GameObject spawnedObject = Instantiate(objectsToSpawn[Random.Range(0, objectsToSpawn.Count)], transform.position + new Vector3(Random.Range(-halfWidth, halfWidth), Random.Range(-halfHeight, halfHeight), Random.Range(-halfDepth, halfDepth)), Quaternion.identity);
+            spawnedObject.GetComponent<Rigidbody>().AddForce(((player.transform.position + new Vector3(0,0,Random.Range(0,10)))  - spawnedObject.transform.position).normalized * flingForce);
             yield return new WaitForSeconds(spawnInterval);
         }
     }
